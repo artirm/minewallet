@@ -14,3 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore VIM temporary files
+*.swp
+*.swo
+
+# Ignore SQLite3 files
+*.sqlite3
