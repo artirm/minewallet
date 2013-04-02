@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130402001558) do
+ActiveRecord::Schema.define(version: 20130402011140) do
+
+  create_table "accounts", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "currency"
+    t.float    "balance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "storages", force: true do |t|
     t.integer  "account_id"
@@ -20,9 +29,10 @@ ActiveRecord::Schema.define(version: 20130402001558) do
     t.string   "description"
     t.string   "tags"
     t.integer  "kind"
-    t.integer  "type"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
