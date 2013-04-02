@@ -1,0 +1,49 @@
+<%= form_for(@account) do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+  <div id="field" class="control-group">
+    <%= f.label :title, :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :title, :class=>"input-xlarge" %>
+      <span class="help-inline"></span>
+    </div>
+  </div>
+
+  <div id="field" class="control-group">
+    <%= f.label :currency, :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :currency, :class=>"input-xlarge" %>
+      <span class="help-inline"></span>
+    </div>
+  </div>
+
+  <div id="field" class="control-group">
+    <%= f.label :balance, :class=>"control-label" %>
+    <div class="controls">
+      <%= f.text_field :balance, :class=>"input-xlarge" %>
+      <span class="help-inline"></span>
+    </div>
+  </div>
+
+  <div id="field" class="control-group">
+    <div class="controls">
+      <div class="actions">
+        <%= f.button  'Save', :type => :submit, :class => 'btn btn-primary' %>
+        <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger"%>
+      </div>
+    </div>
+  </div>
+  </fieldset>
+
+<% end %>

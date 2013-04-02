@@ -1,5 +1,11 @@
 Minewallet::Application.routes.draw do
 
+  resources :accounts
+
+  resources :rules
+
+  resources :transactions
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
