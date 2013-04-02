@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  account_id: 1
+  title: MyString
+  amount: 1.5
+  description: MyString
+  tags: MyString
+  kind: 1
+  type: 1
+
+two:
+  account_id: 1
+  title: MyString
+  amount: 1.5
+  description: MyString
+  tags: MyString
+  kind: 1
+  type: 1
