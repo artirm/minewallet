@@ -1,0 +1,20 @@
+    <div class="well" style="padding: 8px 0;">
+      <ul class="nav nav-list">
+        <li class="nav-header">Кошельки</li>
+          <% current_user.accounts.each do |account| %>
+            <li>
+              <%= link_to account_transactions_path(account) do%>
+                <%= account.title%> (<%= account.balance %> <%= account.currency %>)
+              <% end %>
+            </li>
+          <% end %>
+        <li class="nav-header">Быстрые транзакции</li>
+        <% current_user.rules.each do |rule| %>
+          <li>
+          <%#link_to( "#apply-confirm", :class=>"apply-confirm") do %>
+            <%= link_to rule.title, rule_path(rule)%>
+          <% #end %>
+          </li>
+          <% end %>
+      </ul>
+    </div>

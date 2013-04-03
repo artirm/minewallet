@@ -9,7 +9,7 @@ ru:
     - Пт
     - Сб
     abbr_month_names:
-    - 
+    -
     - янв.
     - февр.
     - марта
@@ -35,7 +35,7 @@ ru:
       long: ! '%d %B %Y'
       short: ! '%d %b'
     month_names:
-    - 
+    -
     - января
     - февраля
     - марта
@@ -248,6 +248,86 @@ ru:
       long: ! '%d %B %Y, %H:%M'
       short: ! '%d %b, %H:%M'
     pm: вечера
+
+  flash:
+    alert: ошибка
+
+####
+  helpers:
+    label:
+      user:
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        email: Email
+        remember_me: Запомнить меня
+
+      account:
+        title: Название
+        currency: Валюта
+        balance: Баланс
+
+      transaction:
+        account: Кошелек
+        kind: Тип
+        tags: Тэги
+        amount: Сумма
+        description: Описание
+
+      rule:
+        title: Название
+        account: Кошелек
+        kind: Тип
+        tags: Тэги
+        amount: Сумма
+        description: Описание
+    submit:
+        create: Создать
+        update: Исправить
+
+  activerecord:
+    models:
+      account: Кошелек
+
+
+# Start
+  accounts:
+    new:
+      title: Новый кошелек
+    edit:
+      title: Исправить кошелек
+
+  transactions:
+    update_forbidden: Транзакция была зафиксирована, т.к создана более 15 минут назад. Редактирование запрещено, т.к. действие повлечет нарушение целостности ваших счетов и их статистики.
+    edit_transaction: Редактировать
+    new:
+      title: Новая транзакция
+    edit:
+      title: Исправить транзакцию
+
+  rules:
+    new:
+      title: Новое правило
+    edit:
+      title: Исправить правило
+
+  layouts:
+    application:
+      accounts_path: Кошельки
+      transactions: Транзакции
+      transactions_path: Просмотреть транзакции
+      new_transaction_path: Создать транзакцию
+      rules_path: Просмотреть быстрые транзакции
+      new_rule_path: Сздать правило
+      help: Помощь
+      profile: Профиль
+      support: Тех.поддержка
+      destroy_user_session_path: Выход
+      new_user_session_path: Вход
+
+#End
+  cancel: Отмена
+  reset: Очистить
+  destroy: Удалить
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
     errors:

@@ -1,15 +1,16 @@
 class RulesController < ApplicationController
   before_action :set_rule, only: [:show, :edit, :update, :destroy]
-
+  before_action :isset_account
   # GET /rules
   # GET /rules.json
   def index
-    @rules = Rule.all
+    @rules = current_user.rules
   end
 
   # GET /rules/1
   # GET /rules/1.json
   def show
+    @transaction = @rule
   end
 
   # GET /rules/new
@@ -42,7 +43,7 @@ class RulesController < ApplicationController
   def update
     respond_to do |format|
       if @rule.update(rule_params)
-        format.html { redirect_to @rule, notice: 'Rule was successfully updated.' }
+        format.html { redirect_to rules_path, notice: 'Rule was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -72,7 +73,9 @@ class RulesController < ApplicationController
       params[:rule].permit(:title, :account_id, :kind, :tags, :amount, :description)
     end
 
-
+    def isset_account
+      redirect_to root_path if current_user.accounts.empty?
+    end
 
 
 end

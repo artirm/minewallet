@@ -11,7 +11,7 @@
     </div>
   <% end %>
   <div id="field" class="control-group">
-    <%= f.label :title, :class=>"control-label" do%>Название<% end %>
+    <%= f.label :title, :class=>"control-label" %>
     <div class="controls">
       <%= f.text_field :title, :class=>"input-xlarge" %>
       <span class="help-inline"></span>
@@ -19,7 +19,7 @@
   </div>
 
   <div id="field" class="control-group">
-    <%= f.label :account_id, :class=>"control-label" do%>Кошелек<% end %>
+    <%= f.label :account_id, :class=>"control-label" %>
     <div class="controls">
       <%= f.select(:account_id, options_from_collection_for_select(current_user.accounts.all, :id, :title, :selected => @rule.account_id) )%>
       <span class="help-inline"></span>
@@ -27,7 +27,7 @@
   </div>
 
   <div id="field" class="control-group">
-    <%= f.label :kind, :class=>"control-label" do%>Тип<% end %>
+    <%= f.label :kind, :class=>"control-label"%>
     <div class="controls">
       <%= f.select(:kind, options_for_select([['Расход', 0], ['Доход', 1]], @rule.kind))%>
       <span class="help-inline"></span>
@@ -35,25 +35,23 @@
   </div>
 
   <div id="field" class="control-group">
-    <%= f.label :tags, :class=>"control-label" do%>Тэги<% end %>
+    <%= f.label :tags, :class=>"control-label"%>
     <div class="controls">
-      <%= f.text_field :tags, :class=>"input-xlarge" %>
+      <%= f.text_field :tags, :class=>"input-xlarge"%>
       <span class="help-inline"></span>
     </div>
   </div>
 
   <div id="field" class="control-group">
-    <%= f.label :amount, :class=>"control-label" do%>Размер<% end %>
+    <%= f.label :amount, :class=>"control-label"%>
     <div class="controls">
-      <%= f.text_field :amount, :class=>"input-xlarge" %>
+      <%= f.text_field :amount, :class=>"input-xlarge"%>
       <span class="help-inline"></span>
     </div>
   </div>
 
   <div id="field" class="control-group">
-    <%= f.label :description, :class=>"control-label" do%>
-      Описание
-    <% end %>
+    <%= f.label :description, :class=>"control-label" %>
     <div class="controls">
       <%= f.text_area :description, :class=>"span6" %>
       <span class="help-inline"></span>
@@ -67,6 +65,4 @@
       </div>
     </div>
   </div>
-
-
 <% end %>

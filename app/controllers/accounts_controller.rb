@@ -1,15 +1,11 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :isset_account, :except => [:new, :create]
 
   # GET /accounts
   # GET /accounts.json
   def index
     @accounts = current_user.accounts.all
-  end
-
-  # GET /accounts/1
-  # GET /accounts/1.json
-  def show
   end
 
   # GET /accounts/new
@@ -28,7 +24,10 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        format.html {
+          redirect_to transactions_path, notice: 'Account was successfully created.' if current_user.accounts.count > 1
+          redirect_to transactions_path, notice: 'Поздравляем с созданием первого кошелька! Теперь все готово к использованию сервиса!' if current_user.accounts.count == 1 && current_user.transactions.empty?
+        }
         format.json { render action: 'show', status: :created, location: @account }
       else
         format.html { render action: 'new' }
@@ -56,8 +55,8 @@ class AccountsController < ApplicationController
   def destroy
     @account.destroy
     respond_to do |format|
-      format.html { redirect_to accounts_url }
-      format.json { head :no_content }
+        format.html { redirect_to accounts_url }
+        format.json { head :no_content }
     end
   end
 
