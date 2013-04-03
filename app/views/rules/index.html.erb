@@ -1,25 +1,35 @@
-<h1>Listing rules</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<table class="table table-striped">
     <% @rules.each do |rule| %>
-    <tr>
-      <td><%= link_to 'Show', rule %></td>
-      <td><%= link_to 'Edit', edit_rule_path(rule) %></td>
-      <td><%= link_to 'Destroy', rule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tr>
+        <td>
+          <%= kind_title(rule) %>
+          <span class="label warning"><%= rule.account.title%></span>
+          <span class="label info"><%= rule.tags %></span>
+        </td>
+        <td>
+          <h3><%= rule.amount %> <%# transaction.account.currency %></h3>
+          <small><%= rule.description %></small>
+        </td>
+        <td>
+      <div class="btn-group pull-right">
+          <%= link_to rule, :class=>"btn btn-mini btn-success" do %>
+            <i class="icon-ok icon-white"></i> Применить правило
+          <% end %>
 
-<br />
+          <%= link_to edit_rule_path(rule), :class=>"btn btn-mini btn-success" do %>
+            <i class="icon-edit icon-white"></i> Редатрировать
+          <% end %>
 
-<%= link_to 'New Rule', new_rule_path %>
+          <%= link_to rule, method: :delete, data: { confirm: 'Are you sure?', :class=>"confirm" }, :class=>"btn btn-mini btn-danger delete" do %>
+            <i class="icon-trash icon-white"></i> Удалить
+          <%end%>
+      </div>
+        </td>
+      </tr>
+  <% end %>
+  </table>
+
+<%= link_to(new_rule_path, :class=>"btn btn-large btn-success") do %>
+  <i class="icon-plus icon-white"></i>Добавить правило
+<% end %>
+

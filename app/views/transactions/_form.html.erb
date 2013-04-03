@@ -12,15 +12,21 @@
   <% end %>
 
   <div id="field" class="control-group">
-    <%= f.label :account_id,  :class=>"control-label" do%>Кошелек<% end %>
+    <%= f.label :account,  :class=>"control-label" %>
     <div class="controls">
-      <%= f.select(:account_id, options_from_collection_for_select(current_user.accounts.all, :id, :title, :selected => params[:account_id]))%>
+
+      <% if params[:account_id] %>
+        <%= f.select(:account_id, options_from_collection_for_select(current_user.accounts.all, :id, :title, :selected => params[:account_id]))%>
+      <% else %>
+        <%= f.select(:account_id, options_from_collection_for_select(current_user.accounts.all, :id, :title, :selected => @transaction.account_id))%>
+      <% end %>
+
       <span class="help-inline"></span>
     </div>
   </div>
 
   <div id="field" class="control-group">
-    <%= f.label :kind, :class=>"control-label" do%>Тип<% end %>
+    <%= f.label :kind, :class=>"control-label"  %>
     <div class="controls">
       <%= f.select(:kind, options_for_select([['Расход', 0], ['Доход', 1]], @transaction.kind))%>
       <span class="help-inline"></span>
@@ -28,7 +34,7 @@
   </div>
 
   <div id="field" class="control-group">
-    <%= f.label :tags, :class=>"control-label" do%>Тэги<% end %>
+    <%= f.label :tags, :class=>"control-label" %>
     <div class="controls">
       <%= f.text_field :tags, :class=>"input-xlarge" %>
       <span class="help-inline"></span>
@@ -36,7 +42,7 @@
   </div>
 
   <div id="field" class="control-group">
-    <%= f.label :amount, :class=>"control-label" do%>Размер<% end %>
+    <%= f.label :amount, :class=>"control-label" %>
     <div class="controls">
       <%= f.text_field :amount, :class=>"input-xlarge" %>
       <span class="help-inline"></span>
@@ -44,9 +50,7 @@
   </div>
 
   <div id="field" class="control-group">
-    <%= f.label :description, :class=>"control-label" do%>
-      Описание
-    <% end %>
+    <%= f.label :description, :class=>"control-label" %>
     <div class="controls">
       <%= f.text_area :description, :class=>"span6" %>
       <span class="help-inline"></span>
@@ -57,8 +61,8 @@
   <div id="field" class="control-group">
     <div class="controls">
       <div class="actions">
-        <%= f.button  'Save', :type => :submit, :class => 'btn btn-primary' %>
-        <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger"%>
+        <%= f.button  :type => :submit, :class => 'btn btn-primary' %>
+        <%= link_to t("cancel"),transactions_path , :class => "btn btn-danger"%>
       </div>
     </div>
   </div>

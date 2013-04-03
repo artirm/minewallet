@@ -39,8 +39,9 @@
   <div id="field" class="control-group">
     <div class="controls">
       <div class="actions">
-        <%= f.button  'Save', :type => :submit, :class => 'btn btn-primary' %>
-        <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger"%>
+        <%= f.button  :type => :submit, :class => 'btn btn-primary' %>
+        <%= f.button t("reset"), :type => :reset, :class => "btn btn-danger"%>
+        <%= link_to t("cancel"),accounts_path , :class => "btn btn-danger"%>
       </div>
     </div>
   </div>

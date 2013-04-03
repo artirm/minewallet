@@ -1,33 +1,38 @@
-<h1>Listing accounts</h1>
+<% if @accounts.size >0 %>
+<table class="table table-stripped">
+  <tr>
+    <th>Название</th>
+    <th>Валюта</th>
+    <th>Баланс</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Currency</th>
-      <th>Balance</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% @accounts.each do |account| %>
+  <tr>
+    <td><h3><%= account.title %></h3></td>
+    <td><%= account.currency %></td>
+    <td><%= account.balance %> <%= account.currency %></td>
+    <td>
+      <div class="btn-group pull-right">
+        <%= link_to(new_account_transaction_path(account), :class=>"btn btn-mini btn-success") do %>
+          <i class="icon-plus icon-white"></i> транзакцию
+        <% end %>
+        <%= link_to(new_account_transaction_path(account), :class=>"btn btn-mini btn-success") do %>
+          <i class="icon-plus icon-white"></i> правило
+        <% end %>
 
-  <tbody>
-    <% @accounts.each do |account| %>
-    <tr>
-      <td><%= account.user_id %></td>
-      <td><%= account.title %></td>
-      <td><%= account.currency %></td>
-      <td><%= account.balance %></td>
-      <td><%= link_to 'Show', account %></td>
-      <td><%= link_to 'Edit', edit_account_path(account) %></td>
-      <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
-  </tbody>
+        <%= edit_account_link(account) %>
+        <%= delete_account_link(account) %>
+      </div>
+      </td>
+  </tr>
+<% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Account', new_account_path %>
+<% else %>
+  <h1> Нет доступных кошельков! Создайте!</h1>
+  <% end %>
+<%= new_account_link %>

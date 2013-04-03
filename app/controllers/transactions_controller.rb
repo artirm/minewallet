@@ -1,15 +1,14 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: [:edit, :update, :destroy]
+  before_action :set_account, only: [:index]
+  before_action :isset_account
+  before_filter :create_update_interval, only: [:edit, :update]
 
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
-  end
-
-  # GET /transactions/1
-  # GET /transactions/1.json
-  def show
+    @account ? @transactions = @account.transactions :  @transactions = current_user.transactions.all
+    #not_found if @transactions.empty?
   end
 
   # GET /transactions/new
@@ -28,7 +27,7 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
+        format.html { redirect_to transactions_url, notice: 'Transaction was successfully created.' }
         format.json { render action: 'show', status: :created, location: @transaction }
       else
         format.html { render action: 'new' }
@@ -42,7 +41,7 @@ class TransactionsController < ApplicationController
   def update
     respond_to do |format|
       if @transaction.update(transaction_params)
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
+        format.html { redirect_to transactions_url, notice: 'Transaction was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +55,7 @@ class TransactionsController < ApplicationController
   def destroy
     @transaction.destroy
     respond_to do |format|
-      format.html { redirect_to transactions_url }
+      format.html { redirect_to transactions_url}
       format.json { head :no_content }
     end
   end
@@ -67,8 +66,22 @@ class TransactionsController < ApplicationController
       @transaction = current_user.transactions.find(params[:id])
     end
 
+    def set_account
+      @account = current_user.accounts.find(params[:account_id]) if params[:account_id]
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
       params[:transaction].permit(:account_id, :kind, :tags, :amount, :description)
     end
+
+    def create_update_interval
+        redirect_to transactions_path, alert: t('transactions.update_forbidden')  unless @transaction.update_allowed
+    end
+
+    def not_found
+      redirect_to root_path, notice: 'Transaction empty!.'
+      #raise ActionController::RoutingError.new('Not Found')
+    end
+
 end
