@@ -285,6 +285,13 @@ ru:
         update: Исправить
 
   activerecord:
+    errors:
+      models:
+        account:
+          title: Название
+          currency: Валюта
+          balance: Баланс
+
     models:
       account: Кошелек
 

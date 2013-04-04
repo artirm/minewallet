@@ -8,7 +8,15 @@ Minewallet::Application.routes.draw do
 
   devise_for :users
 
-  root "users#index"
+  authenticated :user do
+    root :to => "transactions#index"
+  end
+
+  unauthenticated :user do
+    devise_scope :user do
+      get "/" => "devise/sessions#new"
+    end
+  end
 
   resources :accounts do
     resources :transactions

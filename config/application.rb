@@ -20,6 +20,5 @@ module Minewallet
      config.i18n.default_locale = :ru
 
     #config.assets.initialize_on_precompile = false
-
   end
 end

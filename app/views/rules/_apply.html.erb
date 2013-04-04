@@ -1,12 +1,5 @@
-<%= form_for(@rule) do |f| %>
+<%= form_for @rule, :url => create_transactions_path, :method => :put do |f| %>
   <%= render "shared/error", object: @rule %>
-  <div id="field" class="control-group">
-    <%= f.label :title, :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :title, :class=>"input-xlarge" %>
-      <span class="help-inline"></span>
-    </div>
-  </div>
 
   <div id="field" class="control-group">
     <%= f.label :account_id, :class=>"control-label" %>
@@ -56,3 +49,4 @@
     </div>
   </div>
 <% end %>
+

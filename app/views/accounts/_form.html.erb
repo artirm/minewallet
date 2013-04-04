@@ -1,17 +1,6 @@
 <%= form_for(@account) do |f| %>
-  <% if @account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
-
-      <ul>
-      <% @account.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <fieldset>
+    <%= render "shared/error", object: @account %>
   <div id="field" class="control-group">
     <%= f.label :title, :class=>"control-label" %>
     <div class="controls">
