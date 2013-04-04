@@ -5,12 +5,9 @@ gem 'rails', '4.0.0.beta1'
 
 gem 'devise', github: 'idl3/devise', branch: 'rails4'
 gem 'activesupport', '4.0.0.beta1'
-gem "nokogiri"
+gem 'sqlite3'
 # Gems used only for assets and not required
 # in production environments by default.
-group :development, :test do
-    gem 'sqlite3'
-end
 group :production do
     gem 'pg'
     gem 'mysql'
