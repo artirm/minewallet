@@ -19,7 +19,9 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: mysql
+  user: b4364eb3c7f4e4
+  password: d040166d
+  host: us-cdbr-east-03.cleardb.com
+  database: heroku_03a9c6cb9cf7596
+
