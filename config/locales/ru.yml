@@ -292,9 +292,6 @@ ru:
           currency: Валюта
           balance: Баланс
 
-    models:
-      account: Кошелек
-
 
 # Start
   accounts:
@@ -306,6 +303,9 @@ ru:
   transactions:
     update_forbidden: Транзакция была зафиксирована, т.к создана более 15 минут назад. Редактирование запрещено, т.к. действие повлечет нарушение целостности ваших счетов и их статистики.
     edit_transaction: Редактировать
+    income: Доход
+    expense: Расход
+
     new:
       title: Новая транзакция
     edit:
