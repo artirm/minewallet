@@ -7,7 +7,7 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @account ? @transactions = @account.transactions :  @transactions = current_user.transactions.to_a
+    @account ? @transactions = @account.transactions.order('create_at DESC').to_a :  @transactions = current_user.transactions.order('created_at DESC').to_a
     #not_found if @transactions.empty?
   end
 
