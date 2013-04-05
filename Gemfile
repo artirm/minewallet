@@ -6,7 +6,8 @@ gem 'rails', '4.0.0.beta1'
 gem 'devise', github: 'idl3/devise', branch: 'rails4'
 
 gem 'activesupport', '4.0.0.beta1'
-
+gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
+gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 group :production do
     gem 'thin'
     gem 'pg'
