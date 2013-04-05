@@ -285,8 +285,6 @@ ru:
         update: Исправить
 
   activerecord:
-<<<<<<< HEAD
-=======
     errors:
       models:
         account:
@@ -294,7 +292,6 @@ ru:
           currency: Валюта
           balance: Баланс
 
->>>>>>> deployonheroku
     models:
       account: Кошелек
 
@@ -327,11 +324,7 @@ ru:
       transactions_path: Просмотреть транзакции
       new_transaction_path: Создать транзакцию
       rules_path: Просмотреть быстрые транзакции
-<<<<<<< HEAD
-      new_rule_path: Сздать правило
-=======
       new_rule_path: Создать правило
->>>>>>> deployonheroku
       help: Помощь
       profile: Профиль
       support: Тех.поддержка
