@@ -29,7 +29,11 @@ class RulesController < ApplicationController
 
     respond_to do |format|
       if @rule.save
+<<<<<<< HEAD
         format.html { redirect_to @rule, notice: 'Rule was successfully created.' }
+=======
+        format.html { redirect_to rules_path, notice: 'Rule was successfully created.' }
+>>>>>>> deployonheroku
         format.json { render action: 'show', status: :created, location: @rule }
       else
         format.html { render action: 'new' }

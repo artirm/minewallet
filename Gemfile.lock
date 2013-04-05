@@ -47,9 +47,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+<<<<<<< HEAD
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
+=======
+    erubis (2.7.0)
+>>>>>>> deployonheroku
     execjs (1.4.0)
       multi_json (~> 1.0)
     hike (1.2.1)
@@ -67,6 +71,10 @@ GEM
     mime-types (1.22)
     minitest (4.7.0)
     multi_json (1.7.2)
+<<<<<<< HEAD
+=======
+    mysql (2.9.1)
+>>>>>>> deployonheroku
     orm_adapter (0.4.0)
     pg (0.15.0)
     polyglot (0.3.3)
@@ -105,10 +113,13 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+<<<<<<< HEAD
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
+=======
+>>>>>>> deployonheroku
     thor (0.18.1)
     thread_safe (0.1.0)
       atomic
@@ -134,9 +145,16 @@ DEPENDENCIES
   devise!
   jbuilder (~> 1.0.1)
   jquery-rails
+<<<<<<< HEAD
   pg
   rails (= 4.0.0.beta1)
   sass-rails (~> 4.0.0.beta1)
   thin
+=======
+  mysql
+  pg
+  rails (= 4.0.0.beta1)
+  sass-rails (~> 4.0.0.beta1)
+>>>>>>> deployonheroku
   turbolinks
   uglifier (>= 1.0.3)

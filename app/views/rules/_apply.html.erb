@@ -1,26 +1,5 @@
-<%= form_for(@rule) do |f| %>
-<<<<<<< HEAD
-  <% if @rule.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@rule.errors.count, "error") %> prohibited this rule from being saved:</h2>
-
-      <ul>
-      <% @rule.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-=======
+<%= form_for @rule, :url =>transactions_path, :as=> :transaction, :method => :post do |f| %>
   <%= render "shared/error", object: @rule %>
->>>>>>> deployonheroku
-  <div id="field" class="control-group">
-    <%= f.label :title, :class=>"control-label" %>
-    <div class="controls">
-      <%= f.text_field :title, :class=>"input-xlarge" %>
-      <span class="help-inline"></span>
-    </div>
-  </div>
 
   <div id="field" class="control-group">
     <%= f.label :account_id, :class=>"control-label" %>
@@ -70,3 +49,4 @@
     </div>
   </div>
 <% end %>
+
