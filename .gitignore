@@ -21,3 +21,4 @@
 
 # Ignore SQLite3 files
 *.sqlite3
+config/database.yml

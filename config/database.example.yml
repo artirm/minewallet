@@ -21,7 +21,7 @@ development:
 
 production:
   adapter: mysql
-  user: b4364eb3c7f4e4
-  password: d040166d
-  host: us-cdbr-east-03.cleardb.com
-  database: heroku_03a9c6cb9cf7596
+  user: USER
+  password: PASS
+  host: HOST
+  database: DB
