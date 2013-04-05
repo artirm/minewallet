@@ -8,9 +8,6 @@ Minewallet::Application.routes.draw do
 
   devise_for :users
 
-<<<<<<< HEAD
-  root "users#index"
-=======
   authenticated :user do
     root :to => "transactions#index"
   end
@@ -20,7 +17,6 @@ Minewallet::Application.routes.draw do
       get "/" => "devise/sessions#new"
     end
   end
->>>>>>> deployonheroku
 
   resources :accounts do
     resources :transactions
