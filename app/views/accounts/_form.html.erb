@@ -12,7 +12,7 @@
   <div id="field" class="control-group">
     <%= f.label :currency, :class=>"control-label" %>
     <div class="controls">
-      <%= f.text_field :currency, :class=>"input-xlarge" %>
+      <%= f.select(:currency, options_for_select(Account.currency_hash.map { |key, value| [key + value, key] }, "RUR"))%>
       <span class="help-inline"></span>
     </div>
   </div>

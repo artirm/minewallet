@@ -7,7 +7,7 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @account ? @transactions = @account.transactions :  @transactions = current_user.transactions.all
+    @account ? @transactions = @account.transactions :  @transactions = current_user.transactions.to_a
     #not_found if @transactions.empty?
   end
 
@@ -29,6 +29,7 @@ class TransactionsController < ApplicationController
       if @transaction.save
         format.html { redirect_to transactions_url, notice: 'Transaction was successfully created.' }
         format.json { render action: 'show', status: :created, location: @transaction }
+        params[:transaction][:kind] == "1" ? inc(@transaction, params[:transaction][:amount]) : dec(@transaction, params[:transaction][:amount])
       else
         format.html { render action: 'new' }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
@@ -39,10 +40,17 @@ class TransactionsController < ApplicationController
   # PATCH/PUT /transactions/1
   # PATCH/PUT /transactions/1.json
   def update
+    kind = @transaction.kind
+    amount = @transaction.amount
+    account = @transaction.account
     respond_to do |format|
       if @transaction.update(transaction_params)
         format.html { redirect_to transactions_url, notice: 'Transaction was successfully updated.' }
         format.json { head :no_content }
+          unless account == @transaction.account
+            kind == 0 ? account.increment!(:balance,  amount) : account.decrement!(:balance, amount)# При смене кошелька возвращаем баланс в предыдущем
+          end
+        @transaction.kind == 1 ? inc(@transaction, params[:transaction][:amount]) : dec(@transaction, params[:transaction][:amount])
       else
         format.html { render action: 'edit' }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
@@ -84,4 +92,11 @@ class TransactionsController < ApplicationController
       #raise ActionController::RoutingError.new('Not Found')
     end
 
+    def inc(transaction, amount)
+      transaction.account.increment!(:balance,  amount.to_f)
+    end
+
+    def dec(transaction, amount)
+      transaction.account.decrement!(:balance, amount.to_f)
+    end
 end

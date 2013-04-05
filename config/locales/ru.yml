@@ -324,7 +324,7 @@ ru:
       transactions_path: Просмотреть транзакции
       new_transaction_path: Создать транзакцию
       rules_path: Просмотреть быстрые транзакции
-      new_rule_path: Сздать правило
+      new_rule_path: Создать правило
       help: Помощь
       profile: Профиль
       support: Тех.поддержка

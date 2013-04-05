@@ -1,4 +1,4 @@
-<%= form_for @rule, :url => create_transactions_path, :method => :put do |f| %>
+<%= form_for @rule, :url =>transactions_path, :as=> :transaction, :method => :post do |f| %>
   <%= render "shared/error", object: @rule %>
 
   <div id="field" class="control-group">
