@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="span4 offset4 well">
-      <legend>Sign in to MineWallet</legend>
+    <div class="span5 offset3 well">
+      <legend> Войти в MineWallet Pre-Alpha</legend>
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
           <% flash.each do |key, value| %>
             <div class="alert alert-block alert-error fadeout" data-dismiss="alert">
@@ -9,14 +9,14 @@
             <%= value %>
             </div>
           <% end %>
-          <%= f.email_field :email, :autofocus => true, :placeholder=> :email, :class=>"span3"%>
-          <%= f.password_field :password, :placeholder=> :password, :class=>"span3"%>
+          <%= f.email_field :email, :autofocus => true, :placeholder=> :email, :class=>"span5"%>
+          <%= f.password_field :password, :placeholder=> :password, :class=>"span5"%>
           <label class="checkbox">
           <% if devise_mapping.rememberable? -%>
             <%= f.check_box :remember_me %> <%= f.label :remember_me %>
           <% end -%>
           </label>
-          <%= f.submit "Sign in", :class => "btn btn-info btn-block"%>
+          <%= f.submit "Войти", :class => "btn btn-info btn-block"%>
         <% end %>
         <%= render "devise/shared/links" %>
       </div>
