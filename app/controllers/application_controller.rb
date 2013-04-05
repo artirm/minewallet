@@ -2,11 +2,6 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-<<<<<<< HEAD
-
-    def isset_account
-      redirect_to root_path if current_user.accounts.empty?
-=======
   before_action :require_login
 
   layout :layout
@@ -25,7 +20,6 @@ class ApplicationController < ActionController::Base
       unless devise_controller?
         redirect_to root_path unless user_signed_in?
       end
->>>>>>> deployonheroku
     end
 
 end

@@ -1,22 +1,6 @@
 <%= form_for(@account) do |f| %>
-<<<<<<< HEAD
-  <% if @account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
-
-      <ul>
-      <% @account.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <fieldset>
-=======
   <fieldset>
     <%= render "shared/error", object: @account %>
->>>>>>> deployonheroku
   <div id="field" class="control-group">
     <%= f.label :title, :class=>"control-label" %>
     <div class="controls">
@@ -28,11 +12,7 @@
   <div id="field" class="control-group">
     <%= f.label :currency, :class=>"control-label" %>
     <div class="controls">
-<<<<<<< HEAD
-      <%= f.text_field :currency, :class=>"input-xlarge" %>
-=======
       <%= f.select(:currency, options_for_select(Account.currency_hash.map { |key, value| [key + value, key] }, "RUR"))%>
->>>>>>> deployonheroku
       <span class="help-inline"></span>
     </div>
   </div>

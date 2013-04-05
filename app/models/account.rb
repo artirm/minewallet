@@ -2,8 +2,6 @@ class Account < ActiveRecord::Base
   belongs_to :user
   has_many :transactions, :dependent => :destroy
   has_many :rules, :dependent => :destroy
-<<<<<<< HEAD
-=======
 
   validates :title, :length => { :minimum => 3, :maximum=>15 }, :uniqueness => true
   validates_inclusion_of :currency, :in => ["AED",   "ARS",    "ATS",    "AUD",    "BEF",    "BHD",    "BOB",    "BRL",    "CAD",    "CHF",    "CLP",    "CNY",   "CZK",    "DEM",    "DKK",    "EGP",    "ESP",    "EUR",    "FIM",    "FJD",    "FRF",    "GBP",    "GRD",    "HKD",    "IDR",    "IEP",    "ILS",    "INR",    "ITL",    "JMD",    "JPY",    "KRW",    "KWD",    "LKR",    "MXN",    "MYR",    "NLG",    "NOK",    "NPR",    "NZD",    "PAB",    "PGK",    "PHP",    "PKR",    "PTE",    "RUR",    "SAR",    "SBD",    "SEK",    "SGD",    "THB",    "TOP",    "TRL",    "TWD",    "USD", "VUV", "ZAR"]
@@ -69,5 +67,4 @@ class Account < ActiveRecord::Base
     "VUV" => " вату - Вануату",
     "ZAR" => " ранд - ЮАР"}
   end
->>>>>>> deployonheroku
 end
